@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+env
+.envrc
+
+# Virtual environment
+.python-version
+venv
+
+# Redis
+dump.rdb
+
+# Frontend
+frontend/dist
+frontend/node_modules
+
+# Mac
+.DS_Store
+
+# Editor
+.vs
+.vscode
+
+# Private
+TODO
+*.todo
+design/_download

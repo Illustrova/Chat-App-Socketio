@@ -1,0 +1,33 @@
+mixin emoji-picker
+
+	- 
+		let emojiArr = locals.emoji;
+		let emojiGroups = {
+			"0": "Smileys and Emotions",
+			"1": "People and Body",
+			"3": "Animals and Nature",
+			"4": "Food and Drink",
+			"5": "Travel and Places",
+		}
+
+	.emoji-picker(tabindex=0)&attributes(attributes)
+		button.emoji-picker__btn.btn.btn-icon.btn--borderless
+			include ../../../dist/static/assets/icons/emoji.svg
+		.emoji-picker__popover(tabindex=0)
+			.emoji-picker__groups
+				each groupName, groupNum in emojiGroups
+					div(data-group=groupNum, title=groupName class="emoji-picker__group" + (groupNum === "0" ? " emoji-picker__group--active" : ""))
+						each emoji in emojiArr.filter(emoji => emoji.group == groupNum )
+							i.emoji-picker__icon(title=emoji.annotation, data-unicode=emoji.unicode)= emoji.unicode
+			nav.emoji-picker__nav
+				a.emoji-picker__navitem.emoji-picker__navitem--active(data-targetGroup = 0)
+					include ../../../dist/static/assets/icons/emoji_group_icon_0.svg
+				a.emoji-picker__navitem(data-targetGroup = 1)
+					include ../../../dist/static/assets/icons/emoji_group_icon_1.svg
+				a.emoji-picker__navitem(data-targetGroup = 3)
+					include ../../../dist/static/assets/icons/emoji_group_icon_3.svg
+				a.emoji-picker__navitem(data-targetGroup = 4)
+					include ../../../dist/static/assets/icons/emoji_group_icon_4.svg
+				a.emoji-picker__navitem(data-targetGroup = 5)
+					include ../../../dist/static/assets/icons/emoji_group_icon_5.svg
+

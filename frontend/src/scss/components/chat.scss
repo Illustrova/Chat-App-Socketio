@@ -1,0 +1,104 @@
+$header-height: 6em;
+$inputarea-height: 13em;
+
+.chat {
+	position: relative;
+
+	display: flex;
+	flex-wrap: nowrap;
+	width: 100%;
+	margin: 1.5em;
+	overflow: hidden;
+
+	font-size: $scale-base;
+
+	background: $primary;
+
+	@media screen and (max-width: 600px) {
+		font-size: $scale-sm;
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__header {
+		display: flex;
+		flex-shrink: 0;
+		justify-content: center;
+		align-items: center;
+
+		height: $header-height;
+
+		border-bottom: $border;
+	}
+
+	&__name {
+		width: 60%;
+		margin: 0 auto;
+		padding: 0.5em;
+		overflow: hidden;
+
+		color: $text-strong;
+		font-size: $bigger-font-size;
+
+		text-align: center;
+		text-decoration: none;
+		text-overflow: ellipsis;
+
+		&:before {
+			width: 10px;
+			height: 10px;
+			margin-right: 9px;
+
+			color: transparent;
+			vertical-align: 5%;
+
+			content: "\25CF";
+		}
+
+		&[data-status="online"]:before {
+			color: $green;
+		}
+
+		&[data-status="away"]:before {
+			color: $yellow;
+		}
+
+		&[data-status="busy"]:before {
+			color: $red;
+		}
+
+		&[data-status="offline"]:before {
+			color: $white-3;
+		}
+	}
+
+	&__content {
+		flex-grow: 1;
+		overflow-y: auto;
+	}
+
+	&__messages {
+		display: none;
+		width: 100%;
+		height: 100%;
+		padding: 2em;
+		padding-top: 1em;
+
+		overflow: auto;
+
+		&--active {
+			display: block;
+		}
+	}
+
+	&__profile {
+		width: 285px;
+		height: 100%;
+	}
+}

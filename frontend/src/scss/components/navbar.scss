@@ -1,0 +1,160 @@
+$navbar-burger-color: $white-6;
+$navbar-burger-mark-color: $white;
+$navbar-item-color: $white-6;
+$navbar-height-sm: 3.5rem;
+
+$hamburger-animation-speed: 80ms;
+$hamburger-animation-easing: ease-in;
+
+/* hamburger mixin from Bulma */
+@mixin hamburger($dimensions) {
+	position: relative;
+
+	display: block;
+	width: $dimensions;
+	height: $dimensions;
+
+	cursor: pointer;
+
+	span {
+		position: absolute;
+		left: calc(50% - 8px);
+
+		display: block;
+		width: 16px;
+		height: 1px;
+
+		background-color: currentColor;
+		transform-origin: center;
+
+		transition-timing-function: $hamburger-animation-easing;
+		transition-duration: $hamburger-animation-speed;
+		transition-property: background-color, opacity, transform;
+
+		&:nth-child(1) {
+			top: calc(50% - 6px);
+		}
+
+		&:nth-child(2) {
+			top: calc(50% - 1px);
+		}
+
+		&:nth-child(3) {
+			top: calc(50% + 4px);
+		}
+	}
+
+	&:hover {
+		background-color: rgba(black, 0.05);
+	}
+
+	// Modifers
+
+	&.is-active {
+		span {
+			&:nth-child(1) {
+				transform: translateY(5px) rotate(45deg);
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:nth-child(3) {
+				transform: translateY(-5px) rotate(-45deg);
+			}
+		}
+
+		&.has-updates span:first-child:after {
+			display: none;
+		}
+	}
+
+	// indicate that there are new messages in chats
+	/* stylelint-disable-next-line no-descending-specificity */
+	&.has-updates span:first-child:after {
+		position: absolute;
+		top: -0.2em;
+		right: -0.2em;
+
+		display: block;
+		width: 0.4em;
+		height: 0.4em;
+
+		background: $navbar-burger-mark-color;
+		border-radius: 50%;
+		content: "";
+	}
+}
+
+.navbar {
+	display: flex;
+	flex-wrap: nowrap;
+	min-height: $navbar-height;
+	padding-right: 1.5em;
+
+	font-size: $scale-base;
+
+	border-bottom: solid 2px $grey-light;
+
+	/* Smaller navbar on mobiles */
+	@media screen and (max-width: 600px) {
+		min-height: $navbar-height-sm;
+
+		font-size: $scale-sm;
+	}
+
+	@media screen and (min-width: 1000px) {
+		padding-left: 1.5em;
+	}
+
+	&__burger {
+		flex: 0 0 auto;
+
+		color: $navbar-burger-color;
+
+		@include hamburger($navbar-height);
+
+		/* Smaller navbar on mobiles */
+		@media screen and (max-width: 600px) {
+			width: $navbar-height-sm;
+			height: $navbar-height-sm;
+		}
+
+		/* No burger on desktop, sidebar always open */
+		@media screen and (min-width: 1000px) {
+			display: none;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		flex: 1 0 auto;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__item {
+		display: block;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		color: $navbar-item-color;
+		line-height: 1.5;
+	}
+
+	&__brand {
+		color: $white;
+		font-size: 1rem;
+
+		@media screen and (max-width: 600px) {
+			margin-left: auto;
+		}
+	}
+
+	&__item--sm-hide {
+		@media screen and (max-width: 600px) {
+			display: none;
+		}
+	}
+}

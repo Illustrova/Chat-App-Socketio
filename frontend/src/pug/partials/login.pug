@@ -1,0 +1,29 @@
+mixin login()
+	.login__data-wrapper
+		.login__avatar
+			.avatar.avatar--big.avatar--add.dropzone__avatar
+			.dropzone__messages
+				.dz-message Drop picture to upload
+				.dz-error-message.dropzone__message.dropzone__message--error
+		.login__info
+			.modal__input-group
+				label.sr-only(for="username") Username
+				input.login__name#user_name(type="text" placeholder="Your name" name="user_name" pattern="[^\\/:\x22*?<>|]+" required autofocus)
+			.modal__input-group
+				label.sr-only(for="user_status") User status
+				select.status#user_status(name="user_status")
+					option.status__option(value="online") Online
+					option.status__option(value="away") Away
+					option.status__option(value="busy") Busy
+					option.status__option(value="offline") Offline
+			.modal__input-group
+				label.sr-only(for="user_location") User location
+				input.login__location#user_location(type="text" value="Memphis, Tennessee" disabled name="user_location")
+				button.login__locate-btn.btn.btn--small.btn--borderless(title="Locate me!")
+					include ../../../dist/static/assets/icons/aim.svg
+				small.login__location-info
+					span.login__location-source
+					a.login__location-edit(href="javascript:void(0)") Change
+
+
+

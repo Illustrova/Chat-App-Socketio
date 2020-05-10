@@ -1,0 +1,77 @@
+/* Customization for dropzone.js plugin */
+@import "node_modules/dropzone/dist/dropzone";
+
+/* Reset plugin styles */
+.dropzone {
+	position: relative;
+
+	min-height: auto;
+	padding: 0;
+
+	background: none;
+	border: none;
+
+	.dz-message {
+		margin: 0;
+	}
+	/* stylelint-disable-next-line selector-max-universal */
+	*[data-dz-remove] * {
+		cursor: pointer;
+	}
+
+	&.dz-drag-hover {
+		border-style: none;
+
+		.dropzone__avatar {
+			border-color: $white-6;
+		}
+	}
+}
+
+/* Additional styling */
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.dropzone {
+	&__messages {
+		position: relative;
+
+		margin: 0;
+
+		font-size: $smaller-font-size;
+	}
+
+	&__avatar {
+		overflow: visible;
+
+		&:active {
+			border-color: $white-6;
+		}
+
+		&:focus {
+			border-color: $white-6;
+			outline: none;
+		}
+	}
+
+	.dropzone__messages {
+		margin-top: 0.5em;
+		margin-bottom: 2.5em;
+
+		font-size: $smaller-font-size;
+
+		.dropzone__message--error {
+			position: absolute;
+			left: 0;
+
+			width: 100%;
+
+			max-height: 2.5em;
+			margin-top: 0.5em;
+			overflow: hidden;
+
+			color: $red;
+			font-size: $smaller-font-size;
+			text-overflow: ellipsis;
+		}
+	}
+}

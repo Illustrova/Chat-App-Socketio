@@ -1,0 +1,113 @@
+.sidebar {
+	position: relative;
+
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: column;
+	justify-content: stretch;
+
+	max-width: 0;
+	max-height: 100%;
+	overflow-x: visible;
+
+	background: $background;
+
+	border-right: 0;
+	border-left: 0;
+
+	transition: all 0.4s;
+
+	&--open {
+		max-width: 1000px;
+
+		&.sidebar--right {
+			border-left: solid 2px #3d465e;
+			box-shadow: -2px 0 7px 2px rgba(33, 39, 52, 0.8);
+		}
+
+		&.sidebar--left {
+			border-right: solid 2px #3d465e;
+			box-shadow: 2px 0 7px 2px rgba(33, 39, 52, 0.8);
+		}
+	}
+
+	&__btn--close {
+		z-index: 1;
+
+		background: $primary;
+
+		opacity: 0;
+
+		transition: opacity 0.3s;
+		transition-delay: 0.2s;
+	}
+
+	&--open > &__btn--close {
+		opacity: 1;
+	}
+
+	&__content {
+		display: flex;
+		flex-shrink: 0;
+		flex-direction: column;
+		justify-content: stretch;
+		height: 100%;
+		overflow-y: scroll;
+		overflow-y: overlay;
+	}
+
+	&__section {
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		border-bottom: solid 2px $grey-light;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	&--desktop {
+		width: 270px;
+
+		@media screen and (min-width: 1000px) {
+			max-width: 1000px;
+		}
+	}
+
+	@media screen and (max-width: 700px) {
+		&.sidebar--open {
+			position: absolute;
+			z-index: 10;
+
+			height: 100%;
+
+			&.sidebar--right {
+				right: 0;
+			}
+
+			&.sidebar--left {
+				left: 0;
+			}
+		}
+	}
+
+	@media screen and (max-width: 450px) {
+		&.sidebar--open {
+			width: 100%;
+
+			border-right: 0;
+			border-left: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.sidebar--desktop.sidebar--left {
+		border-right: $border;
+	}
+
+	.sidebar--desktop.sidebar--right {
+		border-left: $border;
+	}
+}

@@ -1,0 +1,61 @@
+// Colors
+$grey-light: #3d465e;
+$grey: #31394c;
+$grey-dark: #212734;
+$white-1: rgba(255, 255, 255, 0.1);
+$white-3: rgba(255, 255, 255, 0.3);
+$white-6: rgba(255, 255, 255, 0.6);
+$white: #ffffff;
+$black: #000000;
+$green: #2ccc71;
+$red: #f75757;
+$yellow: #e7c245;
+$blue: #0078ff;
+
+@function calculate-rem($size) {
+	$remsize: $size / $base-font-size;
+
+	@return #{$remsize}rem;
+}
+
+// Named colors
+$primary: $grey;
+$background: $grey-dark;
+$text: $white-6;
+$text-light: $white-3;
+$text-strong: $white;
+$accent: $blue;
+
+// Typography
+$base-font-size: 16px;
+$body-font-size: 0.8125rem;
+$smaller-font-size: 0.75rem;
+$bigger-font-size: 0.875rem;
+$header-font-size: 1rem;
+
+$body-line-height: 1.58;
+
+$family-primary: "Roboto", sans-serif;
+
+// Scaling utilities
+$scale-base: 1rem;
+$scale-sm: 0.5rem;
+$scale-lg: 1.5rem;
+
+// Links
+$link: $white-6;
+$link-hover: $white;
+
+// Navbar
+$navbar-height: calculate-rem(88px);
+$navbar-background-color: $primary;
+$navbar-item-color: $text;
+$navbar-item-img-max-height: 40px;
+
+// Left sidebar padding
+$sidebar-padding-left: 32px;
+$sidebar-padding-right: 28px;
+
+// Style shortcuts
+$border: solid 2px $grey-light;
+$border-thick: solid 3px $white;

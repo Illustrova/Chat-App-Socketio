@@ -1,0 +1,55 @@
+extends ../layout.pug
+
+append vars
+	- var loaderOpen = true
+	- let bodyClass="is-blurred"
+	- let modalClass="{% if requestLogin %}modal--open{% endif %}"
+	- const BLANK_PIXEL = locals.config.assets.BLANK_PIXEL
+	- const SVG = locals.config.assets.SVG
+	- let T = locals.config.variables.template
+
+block username
+	- const T = locals.config.variables.template
+
+	+contact("{{" + T.USERS.ALL.DATA + "[" + T.USERS.SELF.NAME + "]['avatar']}}", "{{" + T.USERS.SELF.NAME + "}}", null, null, "{{" + T.USERS.SELF.NAME + "[:1].upper()}}" )
+	//- DEBUG
+	//- |{{"all_channels", all_channels}}
+	//- |{{"self_channels", self_channels}} 
+	//- |{{"username", username}} 
+	//- |{{"current_chat", current_chat}} 
+	//- |{{"current_chat_data", current_chat_data}} 
+	//- |{{"all_users_data", all_users_data}} 
+	//- |{{"channel_messages", channel_messages}}
+
+block channels
+	include ./channels.pug
+
+block users
+	include ./users.pug
+
+block chatname
+	| {% if #{T.USERS.ALL.DATA}[#{T.USERS.SELF.CURRENT_CHAT}] %}
+	| {% set status = #{T.USERS.ALL.DATA}[#{T.USERS.SELF.CURRENT_CHAT}]["status"] %}
+	| {% endif %}
+	a.chat__name.link--profile(href="javascript:void(0)" data-status="{{ status }}")
+		| {{#{T.USERS.SELF.CURRENT_CHAT}}}
+
+block messages
+	//- | {{ #{T.USERS.SELF.CURRENT_CHAT} }}
+	//- | {{ #{T.USERS.ALL.DATA} }}
+
+	include ./messages.pug
+
+block inputareaContact
+	|	{%if #{T.USERS.SELF.CURRENT_CHAT_DATA} %}
+	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(data-letter="{{" + T.USERS.SELF.CURRENT_CHAT + "[:1].upper()}}")
+		img(src="{{" + T.USERS.SELF.CURRENT_CHAT_DATA + "['avatar']}}")
+	| {% else %}
+	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(title="{{" + T.USERS.SELF.CURRENT_CHAT + "}}")
+		img(src=SVG.CHANNEL)
+	| {% endif %}
+
+
+block inputareaUser
+	a.link--profile.link__profile--self.inputarea__avatar.inputarea__avatar--self.avatar(data-letter="{{" + T.USERS.SELF.NAME + "[:1].upper()}}")
+		img(src="{{" + T.USERS.ALL.DATA + "[" + T.USERS.SELF.NAME + "]['avatar']}}")

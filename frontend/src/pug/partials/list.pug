@@ -1,0 +1,9 @@
+mixin list(title, btn)
+	.list&attributes(attributes)
+		.list__heading
+			h4= title
+			if btn
+				button.btn.btn--icon.btn--borderless.list__add(class=btn.class title=btn.title)
+					include ../../../dist/static/assets/icons/add.svg
+		ul.list__items
+			block

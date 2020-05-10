@@ -1,0 +1,61 @@
+@mixin reset-button() {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+
+	/* inherit styles from ancestor */
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	text-decoration: none;
+
+	background: transparent;
+	border: none;
+	border-radius: 0;
+
+	appearance: none;
+
+	/* Corrects font smoothing for webkit */
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+}
+
+@mixin reset-input() {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+
+	font: inherit;
+	line-height: inherit;
+	white-space: normal;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+
+	background: none;
+	border: 0;
+}
+// https://github.com/twbs/bootstrap/blob/a4a04cd9ec741050390746f8056cc79a9c04c8df/scss/mixins/_screen-reader.scss @mixin
+/* stylelint-disable declaration-no-important */
+@mixin sr-only() {
+	position: absolute !important;
+
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+	padding: 0 !important;
+	overflow: hidden !important;
+
+	white-space: nowrap !important;
+
+	border: 0 !important;
+
+	clip: rect(0, 0, 0, 0) !important;
+}
+/* stylelint-enable declaration-no-important */
+
+@mixin input-focus() {
+	border-bottom: solid 1px $white;
+	outline: none;
+}

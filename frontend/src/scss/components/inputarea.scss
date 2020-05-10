@@ -1,0 +1,79 @@
+.inputarea {
+	font-size: $scale-base;
+
+	@media screen and (max-width: 600px) {
+		font-size: $scale-sm;
+	}
+
+	&__input-wrapper {
+		display: flex;
+		justify-content: stretch;
+		align-items: center;
+		box-sizing: content-box;
+		min-height: 5em;
+		max-height: 8em;
+		padding: 0.5em 2em;
+
+		border-top: $border;
+		border-bottom: $border;
+
+		& * {
+			box-sizing: border-box;
+		}
+
+		@media screen and (max-width: 600px) {
+			min-height: 8em;
+		}
+
+		& > * {
+			flex-shrink: 0;
+		}
+
+		&:focus-within {
+			border-bottom: $border-thick;
+		}
+	}
+
+	&__avatar {
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&__input {
+		flex-shrink: 1;
+		flex-basis: 100%;
+		max-height: inherit;
+		margin: 0 25px;
+		padding: 1em 0;
+		overflow-y: auto;
+
+		color: $text-strong;
+		font-size: 14px;
+		white-space: pre-wrap;
+		word-break: break-all;
+
+		border: none;
+
+		resize: none;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__submit-wrapper {
+		padding-top: 2em;
+		padding-bottom: 1em;
+	}
+
+	&__submit {
+		display: block;
+		margin-right: 2em;
+		margin-left: auto;
+
+		@media screen and (max-width: 700px) {
+			font-size: 0.75rem;
+		}
+	}
+}

@@ -1,0 +1,146 @@
+.profile {
+	z-index: 1000;
+
+	overflow: visible;
+
+	font-size: $scale-base;
+
+	background: $primary;
+
+	&__close {
+		position: absolute;
+		top: $header-height / 2;
+		left: -20px;
+
+		transform: translateX(-100%) translateY(-50%);
+
+		@media screen and (max-width: 700px) {
+			span {
+				display: none;
+			}
+
+			svg {
+				opacity: 1;
+			}
+		}
+
+		@media screen and (max-width: 700px) {
+			left: 1em;
+
+			transform: translateY(-50%);
+		}
+	}
+
+	&__info {
+		position: relative;
+
+		padding: 3em 2em 2em 2em;
+
+		text-align: center;
+	}
+
+	&__edit {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		display: flex;
+
+		align-self: flex-end;
+		padding: 0.5em;
+	}
+
+	&__input-group {
+		position: relative;
+
+		display: flex;
+		justify-content: space-between;
+
+		input {
+			width: 100%;
+
+			color: $text-strong;
+			line-height: 2;
+
+			background: $primary;
+
+			&:focus {
+				@include input-focus();
+			}
+
+			&::placeholder {
+				color: $text-light;
+			}
+
+			&:not([placeholder]) {
+				border-bottom: $border;
+
+				&:focus {
+					@include input-focus();
+				}
+			}
+
+			@media (max-width: 450px) {
+				margin: 0.25em 0;
+			}
+		}
+	}
+
+	&__avatar {
+		text-align: center;
+	}
+
+	&__name {
+		margin-top: 26px;
+
+		color: $text-strong;
+		font-weight: 500;
+		text-align: center;
+	}
+
+	&__location {
+		margin-top: 14px;
+
+		color: $text-light;
+		font-size: $smaller-font-size;
+		text-align: center;
+	}
+
+	&__status {
+		width: auto;
+		margin: 1em auto 0 auto;
+
+		color: $text;
+		font-size: $body-font-size;
+		text-align: center;
+
+		.status__option {
+			padding: 0 2em;
+
+			color: inherit;
+		}
+
+		&.dk-select-disabled {
+			//override plugin style
+			cursor: default;
+
+			.status__option:hover {
+				color: inherit;
+			}
+		}
+	}
+
+	&__submit {
+		position: absolute;
+		right: 0;
+		bottom: 1em;
+		left: 0;
+
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&__list {
+		font-size: $body-font-size;
+	}
+}

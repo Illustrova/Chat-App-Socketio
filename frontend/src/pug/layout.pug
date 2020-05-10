@@ -1,0 +1,83 @@
+include partials/navbar.pug
+include partials/contact.pug
+include partials/message.pug
+include partials/list.pug
+include partials/channel.pug
+include partials/search.pug
+include partials/emoji-picker.pug
+include partials/modal.pug
+include partials/loader.pug
+include partials/login.pug
+
+block vars
+
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title CS50 Messenger
+		meta(name='description' content='Chat application')
+		meta(name="author" content="Irina Illustrova")
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		base(href="/")
+		//--Stylesheets--
+		link(rel='stylesheet', href=`static/css/main.css`)
+	body(class=bodyClass ? bodyClass : null)
+		+loader(loaderOpen ? true : false)
+		.alert You are currently disconnected. Reconnect to continue.
+		+navbar()
+		.page-wrapper
+			main.wrapper
+				aside.sidebar.sidebar--left.sidebar--desktop
+					.sidebar__content
+						+search("Search channels and contacts")
+						+list("Channels", {class: "channel__add", title: "Add channel"})(class="channel__list sidebar__section")
+							block channels
+
+						+list("Users")(class="users__list sidebar__section")
+							block users
+
+				section.chat
+					.chat__main
+						header.chat__header
+							block chatname
+
+						main.chat__content
+							block messages
+
+						section.chat__inputarea.inputarea
+							.inputarea__input-wrapper
+								block inputareaContact
+									a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar
+										img(src=BLANK_PIXEL)
+
+								.inputarea__input(contenteditable="true")#chatInput
+								+emoji-picker(id="chatEmojiPicker")
+
+								block inputareaUser
+									a.link--profile.link__profile--self.inputarea__avatar.inputarea__avatar--self.avatar
+										img(src=BLANK_PIXEL)
+										
+							.inputarea__submit-wrapper
+								button.inputarea__submit.btn.btn--accent.btn--bigger Send
+					aside.sidebar.sidebar--right.chat__profile.profile
+						button.sidebar__btn--close.btn.btn--small.profile__close
+							include ../../dist/static/assets/icons/arrow-left.svg
+							span Profile
+						section.sidebar__content
+							block profile
+
+		+modal("prompt", true)
+			.modal__input-group
+				label
+					input
+		//--Message template--
+		template(id="template__message")
+			//- template with empty data
+			+message("", "", " ", " ") 
+
+		script(src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer)
+		script(src="static/js/index.js" defer)
+		script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js")
+

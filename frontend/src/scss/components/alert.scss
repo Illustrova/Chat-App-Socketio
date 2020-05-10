@@ -1,0 +1,21 @@
+.alert {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+
+	display: none;
+
+	width: 100%;
+	padding: 0.5em 0;
+
+	color: $text-strong;
+	font-size: 1rem;
+	text-align: center;
+
+	background-color: $red;
+
+	&--open {
+		display: block;
+	}
+}

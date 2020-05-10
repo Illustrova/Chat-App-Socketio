@@ -1,0 +1,6 @@
+{%- if members -%} 
+{%- if all_users_data -%} 
+{%- set all_users = all_users_data -%} 
+{%- for member in members -%}<li class="list__item" data-user="{{ member }}" data-updates="0"><div class="contact list__link list__link--disabled" data-chat="user:{{ member }}"><div class="contact__avatar avatar" data-letter="{{ member[:1].upper() }}"><img src="{{ all_users[member]['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ member }}</div><div class="row-break"></div></div></div></li>{%- endfor -%} 
+{%- endif -%}
+{%- endif -%}

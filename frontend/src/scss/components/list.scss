@@ -1,0 +1,132 @@
+.list {
+	display: flex;
+	flex-direction: column;
+
+	padding-top: 35px;
+	padding-bottom: 35px;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&__heading {
+		display: flex;
+		flex-wrap: nowrap;
+
+		margin: 0;
+		padding-bottom: 10px;
+
+		color: $white-3;
+		font-weight: 500;
+
+		font-size: $body-font-size;
+		line-height: 1;
+
+		.list__add {
+			margin-left: auto;
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__link {
+		display: inline-flex;
+		align-items: center;
+
+		width: 100%;
+		padding-top: 15px;
+		padding-bottom: 15px;
+
+		cursor: pointer;
+
+		pointer-events: all;
+
+		> * {
+			/* disable pointer events on children in order to pass necessary event target */
+			pointer-events: none;
+		}
+	}
+
+	&__link:hover,
+	&__link:focus {
+		background-color: $white-1;
+		opacity: 1;
+
+		/* suppress hover effect on devices that don't support hover fully */
+		@media (hover: none), (hover: on-demand) {
+			background: none;
+		}
+	}
+
+	&__link:active,
+	&__item.list__item--active .list__link {
+		background-color: $white-1;
+		opacity: 1;
+	}
+
+	&__link--disabled {
+		pointer-events: none;
+	}
+
+	&__item {
+		position: relative;
+
+		line-height: 1.2;
+
+		&--hidden {
+			display: none;
+		}
+
+		&[data-updates]:not([data-updates=""]):not([data-updates="0"]):not([data-updates="data-updates"]) {
+			order: -2;
+
+			&:after {
+				position: absolute;
+				top: 50%;
+				right: 15px;
+
+				margin-left: auto;
+				padding: 3px 13px;
+
+				color: $white;
+
+				font-size: $smaller-font-size;
+				line-height: 20px;
+
+				background-color: $background;
+
+				border: $border;
+				border-color: $white-6;
+				border-radius: 15px;
+				transform: translateY(-50%);
+
+				content: "+" attr(data-updates);
+			}
+
+			& .list__link {
+				padding-right: 60px;
+			}
+		}
+	}
+
+	&__heading,
+	&__item > * {
+		padding-right: $sidebar-padding-right;
+		padding-left: $sidebar-padding-left;
+	}
+
+	&--condensed {
+		.list__item {
+			min-height: auto;
+
+			.list__link {
+				height: auto;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+		}
+	}
+}

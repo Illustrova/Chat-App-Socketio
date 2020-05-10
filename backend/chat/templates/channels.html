@@ -1,0 +1,9 @@
+{%set current_channel = current_chat %}
+{%- if self_channels -%} 
+	{%- for channel in self_channels -%}<li class="list__item {% if channel == current_channel%}list__item--active{%endif%}" data-channel="{{channel}}" data-updates="0"><a class="channel channel--joined list__link" data-chat="{{channel}}"><div class="channel__name">{{channel}}</div><div class="channel__icon"><button class="channel__btn-join btn btn--small btn--borderless" title="Join channel"><svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 510 510"><path d="M280.5 229.5V153h-51v76.5H153v51h76.5V357h51v-76.5H357v-51h-76.5z"/></svg></button></div></a></li>		{%- endfor -%} 
+{%- endif -%}
+{%- if all_channels and self_channels-%}
+		{%- for channel in all_channels.difference(self_channels) -%}<li class="list__item" data-channel="{{channel}}" data-updates="0"><a class="channel list__link list__link--disabled" data-chat="{{channel}}"><div class="channel__name">{{channel}}</div><div class="channel__icon"><button class="channel__btn-join btn btn--small btn--borderless" title="Join channel"><svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 510 510"><path d="M280.5 229.5V153h-51v76.5H153v51h76.5V357h51v-76.5H357v-51h-76.5z"/></svg></button></div></a></li>		{%- endfor -%} 
+{%- else -%}
+		{%- for channel in all_channels -%}<li class="list__item" data-channel="{{channel}}" data-updates="0"><a class="channel list__link list__link--disabled" data-chat="{{channel}}"><div class="channel__name">{{channel}}</div><div class="channel__icon"><button class="channel__btn-join btn btn--small btn--borderless" title="Join channel"><svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 510 510"><path d="M280.5 229.5V153h-51v76.5H153v51h76.5V357h51v-76.5H357v-51h-76.5z"/></svg></button></div></a></li>		{%- endfor -%} 
+{%- endif -%}

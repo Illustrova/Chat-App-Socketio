@@ -1,0 +1,54 @@
+.message {
+	max-width: 75%;
+	margin-bottom: 1.25em;
+
+	font-size: $scale-base;
+
+	@media screen and (max-width: 450px) {
+		max-width: 100%;
+
+		font-size: $scale-sm;
+	}
+
+	@media screen and (min-width: 450px) and (max-width: 600px) {
+		max-width: 90%;
+
+		font-size: $scale-sm;
+	}
+
+	.contact__info {
+		justify-content: flex-start;
+		margin: 0 2em;
+
+		line-height: 18px;
+	}
+
+	.contact__message {
+		margin-top: 10px;
+		padding: 20px;
+
+		color: $text-strong;
+		white-space: normal;
+		white-space: pre-line;
+
+		background-color: $grey-light;
+		border-radius: 15px;
+	}
+
+	&--self {
+		display: flex;
+		margin-left: auto;
+
+		.contact {
+			justify-content: flex-end;
+		}
+
+		.contact__info {
+			justify-content: flex-end;
+		}
+
+		.avatar {
+			order: 5;
+		}
+	}
+}

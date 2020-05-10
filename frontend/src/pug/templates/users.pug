@@ -1,0 +1,13 @@
+- let t = locals.config.variables.template
+include ../partials/contact.pug
+|{%if current_chat%}
+|{%set current_chat = #{t.USERS.SELF.CURRENT_CHAT} %}
+|{%endif%}
+
+|{%- if #{t.USERS.ALL.DATA}-%} 
+|	{%- for uname, udata in #{t.USERS.ALL.DATA}.items() -%}
+|	{% if uname != username %}
++contactItem("{{ udata['avatar'] }}", "{{ uname }}", null,null,"{{ uname[:1].upper()}}")(class="{% if uname == current_chat%}list__item--active{%endif%}" data-status="{{ udata['status'] }}")
+|	{%- endif -%}
+|	{%- endfor -%} 
+|{%- endif -%}

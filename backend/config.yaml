@@ -1,0 +1,123 @@
+options:
+  dateformat:
+    weekday: short
+    year: numeric
+    month: long
+    day: numeric
+    hour: numeric
+    minute: 2-digit
+variables:
+  socketio:
+    APP:
+      LOADED: app_loaded
+    CHANNELS:
+      UPDATE:
+        ANNOUNCE: channels_announce_update
+        REQUEST: channels_request_update
+        HTML: channels_html
+      JOIN: channel_join
+      CREATE:
+        NEW: channel_create
+        SUCCESS: channel_create_success
+        ERROR: channel_create_error   
+    USERS:
+      UPDATE:
+        ANNOUNCE: users_announce_update
+        REQUEST: users_request_update
+        HTML: users_html
+    CURRENT_CHAT:
+      UPDATED: current_chat_updated
+    CHAT:
+      HTML: chat_html
+      LOAD: chat_load
+    PROFILE:
+      HTML: profile_html
+      LOAD: profile_load
+    MESSAGE:
+      SEND: message_send
+      RECEIVED: message_received
+    USERDATA:
+      UPDATE: userdata_update
+      STATUS: 
+        UPDATED: status_updated
+  template:
+    USERS:
+      SELF:
+        NAME: "username"
+        CURRENT_CHAT: current_chat
+        CURRENT_CHAT_DATA: current_chat_data
+      ALL:
+        DATA: "all_users_data"
+      ONE:
+        DATA: "user_data"
+        CHANNELS: "user_channels"
+    CHANNELS:
+      ALL: "all_channels"
+      SELF: "self_channels"
+      ONE:
+        MEMBERS: "members"
+    MESSAGES:
+      CHANNEL: "channel_messages"
+assets:
+  BLANK_PIXEL: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+  SVG:
+    CHANNEL: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' style='background: %23212734' viewBox='-3 -3 28 20'%3E%3Cpath fill='%23a6a9ae' d='M22 11.5V14h-6v-2.5c0-1.48-.81-2.61-1.97-3.45.35-.03.68-.05.97-.05 2.33 0 7 1.17 7 3.5zm-8 0V14H0v-2.5C0 9.17 4.67 8 7 8s7 1.17 7 3.5zM4 3c0-1.66 1.34-3 3-3s2.99 1.34 2.99 3S8.66 6 7 6C5.34 6 4 4.66 4 3zm8 0c0-1.66 1.34-3 3-3s2.99 1.34 2.99 3S16.66 6 15 6c-1.66 0-3-1.34-3-3z'/%3E%3C/svg%3E"
+content:
+  modal:
+    prompt:
+      channel:
+        title: "Create channel"
+        input-group: 
+            - label: "Enter new channel name:"
+              name: "channel_name"
+              type: "text"
+data:
+  users:
+    Irina Illustrova:
+      avatar: avatar_Irina_Illustrova.jpg
+      location: "Athens, Greece"
+      status: "online"
+      sid: 0
+    Marylin Monroe:
+      avatar: "avatar_Marylin_Monroe.jpeg"
+      location: City of Angels, USA
+      status: away
+      sid: 0
+    Audrey Hepburn:
+      avatar: "avatar_Audrey_Hepburn.jpeg"
+      location: Tolochenaz, Switzerland
+      status: offline
+      sid: 0
+  user_in_channels:
+    Irina Illustrova:
+      - General
+      - Offtopic
+    Marylin Monroe:
+      - Offtopic
+    Audrey Hepburn:
+      - Offtopic
+  channel_members:
+    General:
+      - Irina Illustrova
+    Offtopic:
+      - Irina Illustrova
+      - Marylin Monroe
+      - Audrey Hepburn
+  default_channels:
+    - General
+    - Offtopic
+  messages:
+    General:
+      - sender: Irina Illustrova
+        timestamp: "2020-05-14T12:04:10+02:00"
+        message: "Hello! This is the chat app I created for fun and training, if you want to read details and see source code, please check here: https://github.com/Illustrova/Chat-App-Socketio" 
+      - sender: Irina Illustrova
+        timestamp: "2020-05-14T12:04:10+02:00"
+        message: "Meanwhile you are welcome to check what it can do! Here is the basic functionality:\n 💬 Exchange messages (obviously!) between users one to one or in group channels\n 🌍️ Detect user location based on IP and/or HTML5 Geolocation services\n 👱‍♀️ Upload user avatar image, directly or through drag-and-drop component\n 👁️ Keep track of user data, channels and active conversations\n 👋 Update user data and status, and broadcast changes to other users"
+    Offtopic:
+      - sender: Marylin Monroe
+        timestamp: "1962-08-05T10:42:10+02:00"
+        message: "Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring." 
+      - sender: Audrey Hepburn
+        timestamp: "1993-01-20T21:20:10+02:00"
+        message: "The most important thing is to enjoy your life—to be happy—it's all that matters." 

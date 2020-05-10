@@ -1,0 +1,36 @@
+.search {
+	position: relative;
+
+	display: flex;
+
+	height: 25px;
+	margin-top: 32px;
+	padding-right: $sidebar-padding-right;
+	padding-left: $sidebar-padding-left;
+
+	&:before {
+		position: relative;
+
+		display: block;
+		flex-shrink: 0;
+		width: 36px;
+		margin-right: 20px;
+
+		background: url("../assets/icons/search.svg") no-repeat center;
+		content: "";
+	}
+
+	.search__input {
+		flex-grow: 1;
+
+		color: $text-strong;
+		line-height: 2;
+
+		background-color: $background;
+		border: none;
+
+		&:focus {
+			@include input-focus();
+		}
+	}
+}

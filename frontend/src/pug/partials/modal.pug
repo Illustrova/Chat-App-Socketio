@@ -1,0 +1,15 @@
+mixin modal(modalName, closeBtn=true, modalClass, formClass)
+	.modal.overlay(class="modal__" + modalName class= modalClass ? modalClass : null role="dialog" aria-labelledby="modalTitle-" + modalName)
+		.modal__dialog(role="document")
+			.modal__header
+				.modal__title(id="modalTitle-" + modalName) Welcome! Please login
+				if closeBtn
+					button.btn.btn--borderless.modal__close(type="button" aria-label="Close dialog")
+						include ../../../dist/static/assets/icons/close.svg
+			.modal__body
+				form(class=modalName class=formClass id=modalName + "Form" action="/login" method="POST" enctype="multipart/form-data")
+					block
+
+			.modal__submit-wrapper
+				button.modal__submit.login__submit.btn.btn--accent(type="submit" form=modalName + "Form") Done
+				.modal__alert.modal__alert--error

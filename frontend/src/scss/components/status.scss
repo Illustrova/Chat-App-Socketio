@@ -1,0 +1,144 @@
+@import "node_modules/dropkickjs/src/css/dropkick";
+
+$dk-color-aux: transparent;
+$dk-border-color: $primary;
+$dk-border-color-aux: transparent;
+$dk-border-radius: 0;
+$dk-disabled-color: $background;
+
+/*  Dropkick plugin overrides */
+.dk-selected,
+.dk-select-options {
+	background-color: $primary;
+}
+
+.dk-select-open-down .dk-select-options {
+	border-color: transparent;
+}
+
+.dk-select-options .dk-option-highlight {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dk-selected:after {
+	display: none;
+}
+
+/* Additional status styles */
+.status {
+	width: 100%;
+
+	color: $text;
+
+	background: $primary;
+	border: 0;
+	outline: 0;
+
+	@media screen and (max-width: 450px) {
+		font-size: 0.75em;
+	}
+
+	&:focus,
+	&:active {
+		border: 0;
+		outline: 0;
+	}
+
+	&__option {
+		display: flex;
+		flex-wrap: nowrap;
+
+		line-height: 2;
+
+		background: inherit;
+		border: 0;
+		outline: 0;
+
+		&:hover {
+			color: $white-6;
+		}
+
+		&:before {
+			// override dropkick plugin css. This override completely kill dropdown icon in favor of status icon
+			position: relative;
+			top: auto;
+
+			width: 10px;
+			height: 10px;
+			margin: 0; //reset
+			margin-right: 9px;
+
+			color: $green;
+			vertical-align: 5%;
+
+			border: 0;
+			content: "\25CF";
+		}
+
+		&[data-value="busy"]:before,
+		&[aria-activedescendant$="busy"]:before {
+			color: $red;
+		}
+
+		&[data-value="away"]:before,
+		&[aria-activedescendant$="away"]:before {
+			color: $yellow;
+		}
+
+		&[data-value="offline"]:before,
+		&[aria-activedescendant$="offline"]:before {
+			color: $white-3;
+		}
+		// Hide option which is already selected
+		&[aria-selected="true"] {
+			display: none;
+		}
+	}
+}
+// Hack for dropkick plugin to provide correct status icon color at the initial dropdown state.
+// Sionce initially plugin element has no attributes to rcognize value, we use data-status passed to label before input
+[data-status="away"] + .dk-select .dk-selected:not([aria-activedescendant]):before {
+	color: $yellow;
+}
+
+[data-status="busy"] + .dk-select .dk-selected:not([aria-activedescendant]):before {
+	color: $red;
+}
+
+[data-status="offline"] + .dk-select .dk-selected:not([aria-activedescendant]):before {
+	color: $white-3;
+}
+// Items with status
+
+// Status mixes
+[data-status="online"] {
+	order: -1;
+
+	.avatar {
+		border: solid 2px $green;
+	}
+}
+
+[data-status="away"] {
+	order: 1;
+
+	.avatar {
+		border: solid 2px $yellow;
+	}
+}
+
+[data-status="busy"] {
+	order: 2;
+
+	.avatar {
+		border: solid 2px $red;
+	}
+}
+
+[data-status="offline"] {
+	order: 3;
+
+	.avatar {
+		border: solid 2px $white-3;
+	}
+}

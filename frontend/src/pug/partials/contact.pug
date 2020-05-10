@@ -1,0 +1,24 @@
+mixin contact(avatarSrc, name, date, lastMessage, firstLetter=name.substring(0,1).toUpperCase())
+	mixin contactBody()
+		.contact__avatar.avatar(data-letter=firstLetter)
+			img(src=avatarSrc ? avatarSrc : BLANK_PIXEL)
+		.contact__info
+			.contact__name= name
+			if date
+				.contact__date= date
+			.row-break
+			if lastMessage
+				.contact__message= lastMessage
+
+	if (attributes.class === 'list__link')
+		a.contact(data-chat="user:" + name)&attributes(attributes)
+			+contactBody()
+
+	else
+		.contact(data-chat="user:" + name)&attributes(attributes)
+			+contactBody()
+
+//- Use inside +list() mixin
+mixin contactItem(avatarSrc, name, date, lastMessage, firstLetter, linkactive=true)
+	li.list__item(data-user=name data-updates=0)&attributes(attributes)
+		+contact(avatarSrc, name, date, lastMessage, firstLetter)(class=!linkactive ? "list__link list__link--disabled" : "list__link" )

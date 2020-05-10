@@ -1,0 +1,116 @@
+$popover-width: 160px;
+$popover-height: 180px;
+$corner-size: 10px;
+$popover-padding-x: 10px;
+$popover-padding-y: 10px;
+
+.emoji-picker {
+	position: relative;
+
+	margin-right: 24px;
+
+	&__popover {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		z-index: 1000;
+
+		display: none;
+		width: $popover-width;
+		height: $popover-height + 2 * $popover-padding-y;
+		margin-bottom: 15px;
+
+		padding: $popover-padding-y $popover-padding-x;
+
+		color: initial;
+
+		background: $background;
+		transform: translateX(-50%);
+
+		&:after {
+			position: absolute;
+			bottom: -$corner-size;
+			left: 50%;
+
+			display: block;
+			margin-left: -$corner-size;
+
+			background: transparent;
+			border: $corner-size solid $background;
+			border-color: $background transparent;
+			border-bottom: 0;
+			content: "";
+		}
+
+		&--open {
+			display: block;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__groups {
+		height: $popover-height * 0.85;
+	}
+
+	&__group {
+		display: flex;
+		display: none;
+		flex-wrap: wrap;
+		max-height: 100%;
+		overflow: auto;
+		overflow-x: hidden;
+
+		&--active {
+			display: flex;
+		}
+	}
+
+	&__icon {
+		display: block;
+		flex-basis: 20%;
+		padding: 3px;
+
+		cursor: pointer;
+	}
+
+	&__nav {
+		display: flex;
+		max-height: $popover-height * 0.15;
+	}
+
+	&__navitem {
+		flex: 1 1 auto;
+		padding-top: 10px;
+
+		svg {
+			position: relative;
+			z-index: -1; //for correct target in js
+
+			max-height: 100%;
+
+			opacity: 0.4;
+
+			pointer-events: none;
+		}
+
+		&--active,
+		&:hover,
+		&:active,
+		&:focus {
+			svg {
+				opacity: 1;
+			}
+		}
+
+		&:active,
+		&--active {
+			border-width: 0;
+			border-style: solid;
+			border-color: $white-3;
+			border-top-width: 2px;
+		}
+	}
+}

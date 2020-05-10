@@ -1,0 +1,39 @@
+mixin profile(avatarSrc, username, location, status, editable=false, flask=false)
+	.profile__info.sidebar__section
+		if editable
+			#profileAvatar.dropzone
+				.profile__avatar.avatar.avatar--big.avatar--add.dropzone__avatar(data-src=avatarSrc)
+				.dropzone__messages
+						.dz-message Drop picture to upload
+						.dz-error-message.dropzone__message.dropzone__message--error
+		else
+			.profile__avatar.avatar.avatar--big.avatar--anonym
+				if avatarSrc
+					img(src=avatarSrc)
+		.profile__input-group
+			label.sr-only(for="username") Username
+			input.profile__name#user_name(type="text" value=username placeholder="Your name" name="user_name" pattern="[^\\/:\x22*?<>|]+" required disabled)
+			
+		if location
+			.profile__input-group
+				label.sr-only(for="user_location") User location
+				input.profile__location#user_location(type="text" placeholder="User location" value=location name="user_location" disabled)
+				if editable
+					button.profile__edit.btn.btn--small.btn--borderless(title="Edit")
+						include ../../../dist/static/assets/icons/edit.svg
+		if status
+			.profile__input-group
+				label.sr-only(for="user_status" data-status=status) User status
+				select.status.profile__status#user_status(name="user_status" disabled = editable ? false : true)
+					if !flask
+						option.status__option(value="online" selected = (status === 'online') ? true : false) Online
+						option.status__option(value="away" selected = (status === 'away') ? true : false) Away
+						option.status__option(value="busy" selected = (status === 'busy') ? true : false) Busy
+						option.status__option(value="offline" selected = (status === 'offline') ? true : false) Offline
+					else
+						| <option class="status__option" value="online" {%if user_data.status == 'online'%}selected{%endif%}>Online</option>
+						| <option class="status__option" value="away" {%if user_data.status == 'away'%}selected{%endif%}>Away</option>
+						| <option class="status__option" value="busy" {%if user_data.status == 'busy'%}selected{%endif%}>Busy</option>
+						| <option class="status__option" value="offline" {%if user_data.status == 'offline'%}selected{%endif%}>Offline</option>
+	.profile__list.sidebar__section
+		block

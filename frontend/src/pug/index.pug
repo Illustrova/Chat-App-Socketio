@@ -1,0 +1,55 @@
+//- Development tremplate with mockup data.
+//- Production template can be found at "./templates/index.pug"
+extends layout.pug
+include partials/profile.pug
+
+block vars
+	- var loaderOpen = false
+block username
+	a.link--profile.link--profile--self
+		+contact("https://i.pravatar.cc/100?img=25", 'Michael Hogan')
+
+block channels
+	+channelItem("Auto Blogs vry very long tit", true)(data-updates=0)
+	+channelItem("Group Pages another super long t", true)(data-updates=3)
+	+channelItem("General", true)(data-updates)
+	+channelItem("Offtopic")
+	+channelItem("first 233454665767878789899009", true)(data-updates=8)
+	+channelItem("Telescope")
+block users
+	+contactItem("https://i.pravatar.cc/100?img=25", 'Anne Stokes', "Jun 28", "Astronomy Binoculars...")(data-updates=3)
+	+contactItem("https://i.pravatar.cc/100?img=25", 'Nathan Ruiz', "Fri", "Astronomy Binoculars...")
+	+contactItem("https://i.pravatar.cc/100?img=25", 'Michael Hogan', "Jul 16", "Astronomy Binoculars...")(data-updates=3)
+	+contactItem("https://i.pravatar.cc/100?img=25", 'Michael Hogan', "Jul 16", "Astronomy Binoculars...")
+	+contactItem(BLANK_PIXEL, 'Michael Hogan', "Jul 16", "Astronomy Binoculars...")
+
+
+block chatname
+	a.chat__name.link--profile(href="javascript:void(0)")
+		| Sally Hammond
+
+block messages
+	ul.chat__messages.chat__messages--active(data-chat="General" data-type="channel")
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "What if they let you run the hubble", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event in childhood that started you along this exciting", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "What if they let you run the hubble", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event in childhood that started you along this exciting", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "What if they let you run the hubble", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event in childhood that started you along this exciting", true)
+	ul.chat__messages(data-chat="Offtopic")
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "What if they let you run the hubble", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event in childhood that started you along this exciting", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+		+message("https://i.pravatar.cc/100?img=25", 'You', "1:16pm", "What if they let you run the hubble", true)
+		+message("https://i.pravatar.cc/100?img=25", 'Sally', "1:16pm", "It’s hard to say when in our lives each of us become")
+
+block profile
+	+profile("google.com", "name", "loc", "flask_string", true)

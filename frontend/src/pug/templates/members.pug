@@ -1,0 +1,12 @@
+- let T = locals.config.variables.template
+include ../partials/contact.pug
+
+|{%- if #{T.CHANNELS.ONE.MEMBERS} -%} 
+|{%- if #{T.USERS.ALL.DATA} -%} 
+|{%- set all_users = #{T.USERS.ALL.DATA} -%} 
+|{%- for member in #{T.CHANNELS.ONE.MEMBERS} -%}
+
++contactItem("{{ all_users[member]['avatar'] }}", "{{ member }}", null,null,"{{ member[:1].upper() }}", false)
+|{%- endfor -%} 
+|{%- endif -%}
+|{%- endif -%}

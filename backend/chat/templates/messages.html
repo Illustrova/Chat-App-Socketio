@@ -1,0 +1,15 @@
+{%set all_users = all_users_data%}
+{%if current_chat or channel %}
+{% if not channel%}
+{%set channel = current_chat %}
+{%endif%}
+		{%if channel%}<ul class="chat__messages {%if current_channel%}chat__messages--active{%endif%}" data-chat="{{ channel }}">		{%- if channel_messages -%}
+			{%- for message in channel_messages -%}
+			{% if username == message.sender %}<li class="message message--self"><div class="contact" data-chat="user:{{ message.sender }}"><div class="contact__avatar avatar" data-letter="{{ message.sender[:1].upper()}}"><img src="{{ all_users[message.sender]['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ message.sender }}</div><div class="contact__date">{{ message.timestamp }}</div><div class="row-break"></div><div class="contact__message">{{ message.message }}</div></div></div></li>			{%else%}<li class="message"><div class="contact" data-chat="user:{{ message.sender }}"><div class="contact__avatar avatar" data-letter="{{ message.sender[:1].upper()}}"><img src="{{ all_users[message.sender]['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ message.sender }}</div><div class="contact__date">{{ message.timestamp }}</div><div class="row-break"></div><div class="contact__message">{{ message.message }}</div></div></div></li>				{%endif%}
+			{%- endfor -%}
+		{%endif%}</ul>	{%else%}<ul class="chat__messages" data-type="user" data-chat="{{ username }}">		{%- if channel_messages -%}
+			{%- for message in channel_messages -%}
+			{% if username == message.sender %}<li class="message message--self"><div class="contact" data-chat="user:{{ message.sender }}"><div class="contact__avatar avatar" data-letter="{{ message.sender[:1].upper()}}"><img src="{{ all_users[message.sender]['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ message.sender }}</div><div class="contact__date">{{ message.timestamp }}</div><div class="row-break"></div><div class="contact__message">{{ message.message }}</div></div></div></li>			{%else%}<li class="message"><div class="contact" data-chat="user:{{ message.sender }}"><div class="contact__avatar avatar" data-letter="{{ message.sender[:1].upper()}}"><img src="{{ all_users[message.sender]['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ message.sender }}</div><div class="contact__date">{{ message.timestamp }}</div><div class="row-break"></div><div class="contact__message">{{ message.message }}</div></div></div></li>				{%endif%}
+			{%- endfor -%}
+		{%endif%}</ul>		{%endif%}
+{%else%}<div class="chat__messages chat__messages-dummy">Select channel on the left to start chatting!</div>{%endif%}

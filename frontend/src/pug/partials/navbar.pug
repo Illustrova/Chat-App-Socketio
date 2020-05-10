@@ -1,0 +1,10 @@
+mixin navbar
+	nav.navbar(role="navigation")
+		a.navbar__burger(role="button" aria-label="menu" aria-expanded="false")
+			span(aria-hidden="true")
+			span(aria-hidden="true")
+			span(aria-hidden="true")
+		.navbar__menu
+			.navbar__item.navbar__brand Messenger
+			.navbar__user.navbar__item.navbar__item--sm-hide
+				block username

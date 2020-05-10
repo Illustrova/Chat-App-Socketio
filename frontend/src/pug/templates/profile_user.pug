@@ -1,0 +1,20 @@
+- let T = locals.config.variables.template
+include ../partials/list.pug
+include ../partials/channel.pug
+include ../partials/profile.pug
+| {% set user_data = #{T.USERS.ONE.DATA}%}
+|{%if slf%}
++profile("{{user_data.avatar}}", "{{username}}", "{{user_data.location}}", "{{user_data.status}}", true, true)
+	+list("In channels")(class="list--condensed")
+		|{%for channel in #{T.USERS.ONE.CHANNELS}%}
+		+channelItem("{{channel}}", true, false)
+		|{%endfor%}
+| {%else%}
++profile("{{user_data.avatar}}", "{{username}}", "{{user_data.location}}", "{{user_data.status}}", false, true)
+	+list("In channels")(class="list--condensed")
+		|{%for channel in #{T.USERS.ONE.CHANNELS}%}
+		+channelItem("{{channel}}", true, false)
+		|{%endfor%}
+| {%endif%}
+
+

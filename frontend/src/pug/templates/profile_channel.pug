@@ -1,0 +1,10 @@
+- let T = locals.config.variables.template
+- let SVG = locals.config.assets.SVG
+
+include ../partials/profile.pug
+include ../partials/list.pug
+include ../partials/channel.pug
+| {% set user_data = #{T.USERS.ONE.DATA}%}
++profile(SVG.CHANNEL, "{{channel}}")
+	+list("Channel members")(class="list--condensed list--inactive")
+		include ./members.pug

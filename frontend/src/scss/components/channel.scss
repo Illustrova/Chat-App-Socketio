@@ -1,0 +1,47 @@
+.channel {
+	height: 50px;
+
+	color: #ffffff;
+
+	opacity: 0.3;
+
+	&:before {
+		position: relative;
+
+		display: block;
+		flex-shrink: 0;
+		width: 28px;
+		height: 14px;
+		margin-right: 16px;
+
+		background: url("../assets/icons/channel.svg") no-repeat center;
+		content: "";
+	}
+
+	&__name {
+		margin-right: 10px;
+		overflow: hidden;
+
+		font-weight: 500;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	&__icon {
+		margin-left: auto;
+	}
+
+	&__btn-join {
+		display: block;
+
+		pointer-events: all;
+	}
+
+	&--joined {
+		opacity: 0.6;
+
+		.channel__btn-join {
+			display: none;
+		}
+	}
+}

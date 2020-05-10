@@ -1,0 +1,5 @@
+include contact.pug
+
+mixin message(avatarSrc, name, date, message, self, firstLetter)
+	li(class = self ? "message message--self" : "message")&attributes(attributes)
+		+contact(avatarSrc, name, date, message, firstLetter)

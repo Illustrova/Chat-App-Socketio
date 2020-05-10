@@ -1,0 +1,12 @@
+mixin channel(name, isjoined=false)
+	a.channel(class=isjoined ? "channel--joined" : "")&attributes(attributes)
+		.channel__name= name
+		.channel__icon
+			button.channel__btn-join.btn.btn--small.btn--borderless(title="Join channel")
+				include ../../../dist/static/assets/icons/add-small.svg
+
+//- Use inside +list() mixin
+mixin channelItem(name, isjoined=false, linkactive)
+	- linkactive = linkactive == undefined ? isjoined : linkactive;
+	li.list__item(data-channel=name data-updates=0)&attributes(attributes)
+		+channel(name, isjoined)(data-chat=name class=!linkactive ? "list__link list__link--disabled" : "list__link" )

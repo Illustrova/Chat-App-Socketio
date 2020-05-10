@@ -1,0 +1,152 @@
+html {
+	box-sizing: border-box;
+
+	font-size: $base-font-size;
+
+	background-color: $background; //set default bg
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	text-size-adjust: 100%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+section {
+	display: block;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+fieldset {
+	font-family: $family-primary;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+
+	color: $text;
+	font-size: $body-font-size;
+
+	background-color: $background;
+}
+
+a {
+	color: $link;
+
+	cursor: pointer;
+
+	&:hover {
+		color: $link-hover;
+	}
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+span {
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+
+	border: 0;
+}
+
+input {
+	@include reset-input();
+}
+
+/* Change Autocomplete styles in Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border: inherit;
+	box-shadow: none;
+
+	transition: background-color 5000s ease-in-out 0s;
+	caret-color: $text;
+	-webkit-text-fill-color: $text;
+}
+
+/* Flex utils */
+.row-break {
+	flex-basis: 100%;
+	height: 0;
+}
+
+/* Screen readers only */
+.sr-only,
+.sr-only-focusable:not(:focus) {
+	@include sr-only();
+}
+
+/* Blur body behind modal/loader */
+.is-blurred > .page-wrapper {
+	filter: blur(3px);
+}
+
+/* Universal overlay for modal or other elements */
+
+.overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+
+	background: rgba($background, 0.9);
+}
+
+// Page wrapper
+.wrapper {
+	position: relative;
+
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	height: calc(100vh - #{$navbar-height});
+	min-height: 40em;
+}
+
+// Style for twemoji
+/* stylelint-disable-next-line selector-no-qualifying-type */
+img.emoji {
+	width: 1em;
+	height: 1em;
+	margin: 0 0.05em 0 0.1em;
+
+	vertical-align: -0.1em;
+}

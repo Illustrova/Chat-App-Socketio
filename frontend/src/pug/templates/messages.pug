@@ -1,0 +1,37 @@
+- let t = locals.config.variables.template
+include ../partials/message.pug
+| {%set all_users = #{t.USERS.ALL.DATA}%}
+|{%if #{t.USERS.SELF.CURRENT_CHAT} or channel %}
+
+|{% if not channel%}
+|{%set channel = #{t.USERS.SELF.CURRENT_CHAT} %}
+|{%endif%}
+
+|		{%if channel%}
+ul.chat__messages(data-chat="{{ channel }}" class="{%if current_channel%}chat__messages--active{%endif%}")
+	|		{%- if #{t.MESSAGES.CHANNEL} -%}
+	|			{%- for message in #{t.MESSAGES.CHANNEL} -%}
+	| 			{% if #{t.USERS.SELF.NAME} == message.sender %}
+	+message("{{ all_users[message.sender]['avatar'] }}", '{{ message.sender }}', "{{ message.timestamp }}", "{{ message.message }}", true, "{{ message.sender[:1].upper()}}")
+	| 			{%else%}
+	+message("{{ all_users[message.sender]['avatar'] }}", '{{ message.sender }}', "{{ message.timestamp }}", "{{ message.message }}", false, "{{ message.sender[:1].upper()}}")
+	|				{%endif%}
+	|			{%- endfor -%}
+	|		{%endif%}
+| 	{%else%}
+ul.chat__messages(data-type="user" data-chat="{{ username }}")
+	|		{%- if #{t.MESSAGES.CHANNEL} -%}
+	|			{%- for message in #{t.MESSAGES.CHANNEL} -%}
+	| 			{% if #{t.USERS.SELF.NAME} == message.sender %}
+	+message("{{ all_users[message.sender]['avatar'] }}", '{{ message.sender }}', "{{ message.timestamp }}", "{{ message.message }}", true, "{{ message.sender[:1].upper()}}")
+	| 			{%else%}
+	+message("{{ all_users[message.sender]['avatar'] }}", '{{ message.sender }}', "{{ message.timestamp }}", "{{ message.message }}", false, "{{ message.sender[:1].upper()}}")
+	|				{%endif%}
+	|			{%- endfor -%}
+	|		{%endif%}
+|		{%endif%}
+
+|{%else%}
+.chat__messages.chat__messages-dummy Select channel on the left to start chatting!
+
+|{%endif%}
