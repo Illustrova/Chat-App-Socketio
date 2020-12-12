@@ -35,14 +35,16 @@ module.exports = class Sidebar {
 	/** Show sidebar */
 	open() {
 		this.controller.closeAllSidebars();
-		this.el.classList.add("sidebar--open");
+    this.el.classList.add("sidebar--open");
+    this.el.setAttribute("aria-hidden", "false");
 		if (this.btnToggle) this.btnToggle.classList.add("is-active");
 		this.isOpen = true;
 	}
 
 	/** Hide sidebar */
 	close() {
-		this.el.classList.remove("sidebar--open");
+    this.el.classList.remove("sidebar--open");
+    this.el.setAttribute("aria-hidden", "true"); // since sidebar is not hidden with display: none, it requires aria-hidden attribute
 		if (this.btnToggle) this.btnToggle.classList.remove("is-active");
 		this.isOpen = false;
 	}
