@@ -51,7 +51,14 @@ __Note about HTML templates.__ Frontend development server will be running compi
 
 ### Backend
 
+Prerequisites: Redis should be installed on the machine. First run Redis in separate terminal:
+```
+redis-server
+```
+Then run flask server:
+
 ```shell
+cd backend
 pip3 install -r requirements.txt
 python3 application.py run
 ```
