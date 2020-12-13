@@ -3,7 +3,7 @@ include ../partials/channel.pug
 |{%set current_channel = #{t.USERS.SELF.CURRENT_CHAT} %}
 |{%- if #{t.CHANNELS.SELF} -%} 
 | 	{%- for channel in #{t.CHANNELS.SELF} -%}
-+channelItem("{{channel}}", true, true)(class="{% if channel == current_channel%}list__item--active{%endif%}")
++channelItem("{{channel}}", true, true)(class="{% if channel == current_channel %}list__item--active{% endif %}")
 |		{%- endfor -%} 
 |{%- endif -%}
 |{%- if #{t.CHANNELS.ALL} and #{t.CHANNELS.SELF}-%}

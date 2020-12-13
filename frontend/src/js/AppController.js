@@ -144,7 +144,9 @@ module.exports = class App {
 	 * Close loader when app is ready
 	 */
 	onAppLoaded() {
-    this.components.chat.chatBody.innerHTML = utils.replaceISODates(this.components.chat.chatBody.innerHTML); // quick fix for problem of cnverting dates in static template loaded from server. Definitely not a good solution
+    // quick fix for problem of cnverting dates in static template loaded from server. Definitely not a good solution.
+    // It's important not to modify chatBody properties itself, because we need to store a valid reference to chatBody
+    [...this.components.chat.chatBody.children].forEach(child => child.innerHTML = utils.replaceISODates(child.innerHTML)); 
 		this.components.loader.close();
 	}
 

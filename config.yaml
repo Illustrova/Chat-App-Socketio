@@ -73,42 +73,51 @@ content:
               type: "text"
 data:
   users:
-    Admin:
-      avatar: avatar_Admin_1585346729664.png
-      location: "New York New York"
+    Irina Illustrova:
+      avatar: avatar_Irina_Illustrova.jpg
+      location: "Athens, Greece"
       status: "online"
       sid: 0
-    Miu:
-      avatar: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-      location: Athens
-      status: busy
+    Marylin Monroe:
+      avatar: "avatar_Marylin_Monroe.jpeg"
+      location: City of Angels, USA
+      status: away
+      sid: 0
+    Audrey Hepburn:
+      avatar: "avatar_Audrey_Hepburn.jpeg"
+      location: Tolochenaz, Switzerland
+      status: offline
       sid: 0
   user_in_channels:
-    Admin:
+    Irina Illustrova:
       - General
       - Offtopic
-    Miu:
-      - General
+    Marylin Monroe:
+      - Offtopic
+    Audrey Hepburn:
+      - Offtopic
   channel_members:
     General:
-      - Admin
-      - Miu
+      - Irina Illustrova
     Offtopic:
-      - Admin
+      - Irina Illustrova
+      - Marylin Monroe
+      - Audrey Hepburn
   default_channels:
     - General
     - Offtopic
   messages:
     General:
-      - sender: Admin
-        timestamp: "2020-02-26T12:04:10+02:00"
-        message: It’s hard to say when in our lives each of us become
-      - sender: Miu
-        timestamp: "2020-02-28T12:04:10+02:00"
-        message: It’s lorem ipsum!
+      - sender: Irina Illustrova
+        timestamp: "2020-05-14T12:04:10+02:00"
+        message: "Hello! This is the chat app I created for fun and training, if you want to read details and see source code, please check here: https://github.com/Illustrova/Chat-App-Socketio" 
+      - sender: Irina Illustrova
+        timestamp: "2020-05-14T12:04:10+02:00"
+        message: "Meanwhile you are welcome to check what it can do! Here is the basic functionality:\n 💬 Exchange messages (obviously!) between users one to one or in group channels\n 🌍️ Detect user location based on IP and/or HTML5 Geolocation services\n 👱‍♀️ Upload user avatar image, directly or through drag-and-drop component\n 👁️ Keep track of user data, channels and active conversations\n 👋 Update user data and status, and broadcast changes to other users"
     Offtopic:
-  sid:
-    Admin:
-      - 12345
-      - 23456
-    Miu:
+      - sender: Marylin Monroe
+        timestamp: "1962-08-05T10:42:10+02:00"
+        message: "Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring." 
+      - sender: Audrey Hepburn
+        timestamp: "1993-01-20T21:20:10+02:00"
+        message: "The most important thing is to enjoy your life—to be happy—it's all that matters." 

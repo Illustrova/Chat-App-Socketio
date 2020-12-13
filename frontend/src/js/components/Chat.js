@@ -18,7 +18,7 @@ module.exports = class Chat {
 		this.btnSend = this.el.querySelector(".inputarea__submit");
 		this.messageInput = this.el.querySelector(".inputarea__input");
 		this.messageTemplate = document.getElementById("template__message");
-		this.isActive = this.el.querySelector(".chat__messages--active");
+		this.activeChat = this.el.querySelector(".chat__messages--active");
 		this.profileLinks = this.el.querySelectorAll(".link--profile");
 		// Keep track of loaded chats
 		this.loaded = new Set([...this.chatMessages].map((el) => el.dataset.chat));
@@ -46,7 +46,7 @@ module.exports = class Chat {
 		this.updateScroll();
 
 		twemoji.parse(this.el); // eslint-disable-line no-undef
-		this.isActive.innerHTML = Autolinker.link(this.isActive.innerHTML);
+		this.activeChat.innerHTML = Autolinker.link(this.activeChat.innerHTML);
 	}
 
 	/** Set scroll position in message container to bottom, unless the user had scrolled it manually. */
@@ -91,8 +91,8 @@ module.exports = class Chat {
 	 * @return {string}
 	 */
 	getChatName() {
-		if (this.isActive) {
-			return this.isActive.dataset.chat;
+		if (this.activeChat) {
+			return this.activeChat.dataset.chat;
 		}
 	}
 
@@ -147,10 +147,10 @@ module.exports = class Chat {
 	 * @param {string} chatname
 	 */
 	viewMessages(chatname) {
-		if (this.isActive) this.isActive.classList.remove("chat__messages--active");
-		let el = this.chatBody.querySelector(`[data-chat="${chatname}"]`);
+		if (this.activeChat) this.activeChat.classList.remove("chat__messages--active");
+    let el = this.chatBody.querySelector(`[data-chat="${chatname}"]`);
 		el.classList.add("chat__messages--active");
-		this.isActive = el;
+		this.activeChat = el;
 	}
 
 	/** Sending new message: get message from input area and pass to controller */
