@@ -8,7 +8,7 @@ mixin login()
 		.login__info
 			.modal__input-group
 				label.sr-only(for="username") Username
-				input.login__name#user_name(type="text" placeholder="Your name" name="user_name" pattern="[^\\/:\x22*?<>|]+" required autofocus)
+				input.login__name#user_name(type="text" placeholder="Your name" name="user_name" pattern="(?!^ +$)^[^\\/:\x22*?<>|]+$" required autofocus)
 			.modal__input-group
 				label.sr-only(for="user_status") User status
 				select.status#user_status(name="user_status")
