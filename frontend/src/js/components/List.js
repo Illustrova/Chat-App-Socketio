@@ -1,8 +1,7 @@
 /** Base list component */
 module.exports = class List {
-	constructor(el, controller, itemName) {
+	constructor(el, itemName) {
 		this.el = el;
-		this.controller = controller;
 		this.itemName = itemName;
 	}
 

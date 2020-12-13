@@ -1,9 +1,8 @@
 /** Navbar component */
 
 module.exports = class Navbar {
-	constructor(el, controller) {
+	constructor(el) {
 		this.el = el;
-		this.controller = controller;
 	}
 	setup() {
 		this.user = this.el.querySelector(".navbar__user");

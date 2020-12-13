@@ -7,9 +7,8 @@ const BLANK_PIXEL = require("../../../../config.yaml").assets.BLANK_PIXEL;
 
 /** Profile sidebar component, extending base sidebar */
 module.exports = class ProfileSidebar extends Sidebar {
-	constructor(el, buttons, controller) {
+	constructor(el, buttons) {
 		super(el, buttons);
-		this.controller = controller;
 	}
 	setup() {
 		super.setup();

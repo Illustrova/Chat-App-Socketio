@@ -9,10 +9,9 @@ Dropzone.autoDiscover = false;
 
 /** Extended modal component, displayed on login */
 module.exports = class Login extends Modal {
-	constructor(el, controller) {
+	constructor(el) {
 		super(el);
 		this.el = el;
-		this.controller = controller;
 	}
 
 	setup() {

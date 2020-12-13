@@ -3,10 +3,9 @@ const utils = require("../utils");
 
 /** Prompt modal component, receives and processes user input */
 module.exports = class PromptModal extends Modal {
-	constructor(el, controller, content) {
+	constructor(el, content) {
 		super(el);
 		this.content = content;
-		this.controller = controller;
 		this.customListeners = [];
 	}
 	setup() {

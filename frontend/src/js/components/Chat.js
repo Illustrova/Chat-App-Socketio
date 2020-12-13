@@ -4,9 +4,8 @@ const SVG_CHANNEL = require("../../../../config.yaml").assets.SVG.CHANNEL;
 
 /** Chat component */
 module.exports = class Chat {
-	constructor(el, controller) {
+	constructor(el) {
 		this.el = el;
-		this.controller = controller;
 	}
 
 	setup() {

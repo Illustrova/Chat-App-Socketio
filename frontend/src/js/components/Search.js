@@ -1,9 +1,8 @@
 /** Search component for lists sidebar */
 module.exports = class Search {
-	constructor(el, items, controller) {
+	constructor(el, items) {
 		this.el = el;
 		this.items = items;
-		this.controller = controller;
 	}
 	setup() {
 		// Evaluate on key press

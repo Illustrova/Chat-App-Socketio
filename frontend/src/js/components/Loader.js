@@ -1,8 +1,7 @@
 /** Loader component */
 module.exports = class Loader {
-	constructor(el, controller) {
+	constructor(el) {
 		this.el = el;
-		this.controller = controller;
 	}
 
 	setup() {}
