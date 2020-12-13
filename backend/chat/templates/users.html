@@ -3,6 +3,6 @@
 {%endif%}
 {%- if all_users_data-%} 
 	{%- for uname, udata in all_users_data.items() -%}
-	{% if uname != username %}<li class="list__item {% if uname == current_chat%}list__item--active{%endif%}" data-user="{{ uname }}" data-updates="0" data-status="{{ udata['status'] }}"><a class="contact list__link" data-chat="user:{{ uname }}"><div class="contact__avatar avatar" data-letter="{{ uname[:1].upper()}}"><img src="{{ udata['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ uname }}</div><div class="row-break"></div></div></a></li>	{%- endif -%}
+	{% if uname != username %}<li class="list__item {% if uname == current_chat%}list__item--active{%endif%}" data-user="{{ uname }}" data-updates="0" data-status="{{ udata['status'] }}"><a class="contact list__link" data-chat="user:{{ uname }}" role="button" tabindex="0"><div class="contact__avatar avatar" data-letter="{{ uname[:1].upper()}}"><img src="{{ udata['avatar'] }}"/></div><div class="contact__info"><div class="contact__name">{{ uname }}</div><div class="row-break"></div></div></a></li>	{%- endif -%}
 	{%- endfor -%} 
 {%- endif -%}

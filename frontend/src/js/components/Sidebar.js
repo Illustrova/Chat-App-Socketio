@@ -4,7 +4,6 @@ module.exports = class Sidebar {
 		this.buttons = buttons;
 	}
 	setup() {
-    console.log("t", this)
 		// Elements
 		this.contentContainer = this.el.querySelector(".sidebar__content");
 		// Assign elements for buttons if selectors were provided, or default selectors used
@@ -32,17 +31,12 @@ module.exports = class Sidebar {
     this.isOpen = this.el.classList.contains("sidebar--open") ? true : false;
     
     // Keep open if focused
-    this.el.addEventListener("focusin", (e) => {
-      console.log("focusin", e.target);
-      // e.stopPropagation();
-      this.open()
-    });
-    this.el.addEventListener("focusout", () => console.log("focusout") && this.close())
+    this.el.addEventListener("focusin", () => this.open());
+    this.el.addEventListener("focusout", () => this.close())
 	}
 
 	/** Show sidebar */
 	open() {
-    console.log("🚀 ~ file: Sidebar.js ~ line 41 ~ Sidebar ~ open ~ open", this.isOpen);
     if (this.isOpen) return;
 		this.controller.closeAllSidebars();
     this.el.classList.add("sidebar--open");
@@ -53,7 +47,6 @@ module.exports = class Sidebar {
 
 	/** Hide sidebar */
 	close() {
-    console.log("🚀 ~ file: Sidebar.js ~ line 52 ~ Sidebar ~ close ~ close");
     this.el.classList.remove("sidebar--open");
     this.el.setAttribute("aria-hidden", "true"); // since sidebar is not hidden with display: none, it requires aria-hidden attribute
 		if (this.btnToggle) this.btnToggle.classList.remove("is-active");

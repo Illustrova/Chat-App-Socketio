@@ -1,4 +1,5 @@
-@import "node_modules/dropkickjs/src/css/dropkick";
+@import "node_modules/dropkickjs/src/css/dropkick.scss";
+
 
 $dk-color-aux: transparent;
 $dk-border-color: $primary;
@@ -42,20 +43,23 @@ $dk-disabled-color: $background;
 	&:active {
 		border: 0;
 		outline: 0;
+    border-bottom: solid 1px white;
 	}
 
 	&__option {
 		display: flex;
 		flex-wrap: nowrap;
-
+    
 		line-height: 2;
 
 		background: inherit;
+    border-radius: 0;
 		border: 0;
 		outline: 0;
 
-		&:hover {
+		&:hover, &:focus {
 			color: $white-6;
+      background-color: rgba(255,255,255,0.1)
 		}
 
 		&:before {

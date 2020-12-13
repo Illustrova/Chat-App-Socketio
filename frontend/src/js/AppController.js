@@ -23,6 +23,7 @@ const pageComponents = {
 	],
 	"/login": ["loginModal", "statusSelect"],
 };
+
 module.exports = class App {
 	constructor() {
 		this.components = {};
@@ -143,6 +144,7 @@ module.exports = class App {
 	 * Close loader when app is ready
 	 */
 	onAppLoaded() {
+    this.components.chat.chatBody.innerHTML = utils.replaceISODates(this.components.chat.chatBody.innerHTML); // quick fix for problem of cnverting dates in static template loaded from server. Definitely not a good solution
 		this.components.loader.close();
 	}
 
