@@ -67,8 +67,12 @@
 		margin-bottom: 0;
 		padding-right: 2em;
 
-		&:disabled + .login__locate-btn {
-			display: none;
+		&:disabled {
+			opacity: 0.6;
+			
+			& + .login__locate-btn {
+				display: none;
+			}
 		}
 	}
 

@@ -11,7 +11,7 @@ mixin contact(avatarSrc, name, date, lastMessage, firstLetter=name.substring(0,1
 				.contact__message= lastMessage
 
 	if (attributes.class === 'list__link')
-		a.contact(data-chat="user:" + name)&attributes(attributes)
+		a.contact(data-chat="user:" + name role="button", tabindex="0")&attributes(attributes)
 			+contactBody()
 
 	else

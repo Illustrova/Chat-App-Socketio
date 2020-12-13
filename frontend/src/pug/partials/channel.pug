@@ -1,8 +1,8 @@
 mixin channel(name, isjoined=false)
-	a.channel(class=isjoined ? "channel--joined" : "")&attributes(attributes)
+	a.channel(class=isjoined ? "channel--joined" : "", role="button", tabindex="0")&attributes(attributes)
 		.channel__name= name
 		.channel__icon
-			button.channel__btn-join.btn.btn--small.btn--borderless(title="Join channel")
+			button.channel__btn-join.btn.btn--small.btn--borderless(title="Join channel " + name)
 				include ../../../dist/static/assets/icons/add-small.svg
 
 //- Use inside +list() mixin

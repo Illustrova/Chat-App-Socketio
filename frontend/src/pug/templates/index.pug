@@ -42,14 +42,14 @@ block messages
 
 block inputareaContact
 	|	{%if #{T.USERS.SELF.CURRENT_CHAT_DATA} %}
-	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(data-letter="{{" + T.USERS.SELF.CURRENT_CHAT + "[:1].upper()}}")
+	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(data-letter="{{" + T.USERS.SELF.CURRENT_CHAT + "[:1].upper()}}" type="button" tabindex="0")
 		img(src="{{" + T.USERS.SELF.CURRENT_CHAT_DATA + "['avatar']}}")
 	| {% else %}
-	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(title="{{" + T.USERS.SELF.CURRENT_CHAT + "}}")
+	a.link--profile.inputarea__avatar.inputarea__avatar--chat.avatar(title="{{" + T.USERS.SELF.CURRENT_CHAT + "}}" type="button" tabindex="0")
 		img(src=SVG.CHANNEL)
 	| {% endif %}
 
 
 block inputareaUser
-	a.link--profile.link__profile--self.inputarea__avatar.inputarea__avatar--self.avatar(data-letter="{{" + T.USERS.SELF.NAME + "[:1].upper()}}")
+	a.link--profile.link__profile--self.inputarea__avatar.inputarea__avatar--self.avatar(data-letter="{{" + T.USERS.SELF.NAME + "[:1].upper()}}" type="button" tabindex="0")
 		img(src="{{" + T.USERS.ALL.DATA + "[" + T.USERS.SELF.NAME + "]['avatar']}}")

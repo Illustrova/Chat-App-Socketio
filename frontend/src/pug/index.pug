@@ -1,4 +1,4 @@
-//- Development tremplate with mockup data.
+//- Development template with mockup data.
 //- Production template can be found at "./templates/index.pug"
 extends layout.pug
 include partials/profile.pug
@@ -6,7 +6,7 @@ include partials/profile.pug
 block vars
 	- var loaderOpen = false
 block username
-	a.link--profile.link--profile--self
+	a.link--profile.link--profile--self(type="button" tabindex="0")
 		+contact("https://i.pravatar.cc/100?img=25", 'Michael Hogan')
 
 block channels
